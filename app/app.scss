@@ -1,0 +1,27 @@
+// NativeScript core theme
+// @see https://docs.nativescript.org/ui/theme
+@import '~@nativescript/theme/core';
+@import '~@nativescript/theme/brown';
+
+// Override variables here
+
+// Global SCSS styling
+// @see https://docs.nativescript.org/ui/styling
+@import './colors.scss';
+
+.blue-bg {
+  background-color: $light-blue;
+}
+
+.green-bg {
+  background-color: $light-green;
+}
+
+.brown-bg {
+  background-color: $brown;
+}
+
+.brown-text {
+  color: $brown;
+}
+
