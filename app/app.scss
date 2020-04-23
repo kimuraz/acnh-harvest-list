@@ -9,12 +9,22 @@
 // @see https://docs.nativescript.org/ui/styling
 @import './colors.scss';
 
+.light-bg {
+  background-color: $yellow;
+  color: black;
+}
+
 .blue-bg {
   background-color: $light-blue;
 }
 
 .green-bg {
   background-color: $light-green;
+}
+
+.red-bg {
+  background-color: $red;
+  color: white;
 }
 
 .brown-bg {

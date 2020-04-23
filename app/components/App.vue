@@ -1,9 +1,9 @@
 <template>
   <Page>
     <ActionBar
-      title="Welcome to NativeScript-Vue!"
+      title="AC New Horizons Harvest List"
       android:flat="true"
-      class="brown-bg"
+      class="light-bg"
     />
     <TabView
       android:tabBackgroundColor="#53ba82"
@@ -15,10 +15,10 @@
         <MaterialsList @addMaterial="addMaterial" />
       </TabViewItem>
       <TabViewItem title="DIY" @addMaterial="addMaterial">
-        <DIYList />
+        <DIYList @addMaterial="addMaterial" />
       </TabViewItem>
       <TabViewItem title="Harvest list">
-        <HarvestList :list="list" />
+        <HarvestList :list="list" @removeAll="removeAll"/>
       </TabViewItem>
     </TabView>
   </Page>
@@ -59,12 +59,10 @@ export default {
       this.list[material.name] =
         curAmount - amount < 0 ? 0 : curAmount - amount;
     },
+    removeAll() {
+      this.list = {};
+      appSettings.setString('list', JSON.stringify(this.list));
+    }
   },
 };
 </script>
-
-<style scoped>
-ActionBar {
-  color: #ffffff;
-}
-</style>
