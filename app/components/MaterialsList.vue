@@ -42,7 +42,7 @@ export default {
   computed: {
     filteredMaterials() {
       return this.search
-        ? this.materials.filter(m => m.name.toLowerCase().startsWith(this.search.toLowerCase()))
+        ? this.materials.filter(m => m.name.toLowerCase().includes(this.search.toLowerCase()))
         : this.materials;
     },
   },
