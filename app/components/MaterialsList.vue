@@ -25,6 +25,7 @@
 <script>
 import materials from '../db/materials';
 
+const {prompt, inputType} = require('tns-core-modules/ui/dialogs');
 export default {
   name: 'MaterialsList',
   data() {
@@ -37,12 +38,30 @@ export default {
     materialText(material) {
       return `${material.name} - Selling price: ${material.price}`;
     },
-    showPopup(material) {},
+    showPopup(material) {
+      prompt({
+        title: 'Amout',
+        message: `How many ${material.name} do you need?`,
+        okButtonText: 'Add',
+        cancelButtonText: 'Cancel',
+        defaultText: 0,
+        inputType: inputType.number,
+      }).then(({result, text}) => {
+        if (result) {
+          this.$emit('addMaterial', {
+            name: material.name,
+            amount: parseInt(text),
+          });
+        }
+      });
+    },
   },
   computed: {
     filteredMaterials() {
       return this.search
-        ? this.materials.filter(m => m.name.toLowerCase().includes(this.search.toLowerCase()))
+        ? this.materials.filter(m =>
+            m.name.toLowerCase().includes(this.search.toLowerCase()),
+          )
         : this.materials;
     },
   },
