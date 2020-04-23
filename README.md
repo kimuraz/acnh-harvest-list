@@ -1,6 +1,6 @@
 # ACNH Harvest List
 
-> A native application built with NativeScript-Vue
+> A mobile app for helping you create a list of materials by selecting what you need craft.
 
 ## Usage
 
