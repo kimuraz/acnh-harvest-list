@@ -9,6 +9,10 @@
 // @see https://docs.nativescript.org/ui/styling
 @import './colors.scss';
 
+.container {
+  padding: 20px;
+}
+
 .light-bg {
   background-color: $yellow;
   color: black;
@@ -34,4 +38,3 @@
 .brown-text {
   color: $brown;
 }
-
