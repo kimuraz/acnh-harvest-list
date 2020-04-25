@@ -13,6 +13,10 @@
   padding: 20px;
 }
 
+.small-textfield {
+  max-width: 200px;
+}
+
 .light-bg {
   background-color: $yellow;
   color: black;
@@ -24,6 +28,10 @@
 
 .green-bg {
   background-color: $light-green;
+}
+
+.light-green-bg {
+  background-color: lighten($light-green, 20%);
 }
 
 .red-bg {
