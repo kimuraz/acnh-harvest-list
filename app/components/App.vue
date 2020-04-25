@@ -25,7 +25,11 @@
         <DIYList @addMaterial="addMaterial" />
       </TabViewItem>
       <TabViewItem title="My list" iconSource="~/assets/images/tick-icon.png">
-        <HarvestList :list="list" @removeAll="removeAll" />
+        <HarvestList
+          :list="list"
+          @removeAll="removeAll"
+          @change="changeAmount"
+        />
       </TabViewItem>
     </TabView>
   </Page>
@@ -57,16 +61,22 @@ export default {
   methods: {
     addMaterial(material) {
       if (this.list[material.name]) {
-        this.list[material.name] += material.amount;
+        this.list[material.name].amount += material.amount;
       } else {
-        this.$set(this.list, material.name, material.amount);
+        this.$set(this.list, material.name, {});
+        this.$set(this.list[material.name], 'amount', material.amount);
+        this.$set(this.list[material.name], 'curAmount', 0);
       }
       appSettings.setString('list', JSON.stringify(this.list));
     },
-    removeMaterial(material, amount) {
-      const curAmount = this.list[material.name];
-      this.list[material.name] =
-        curAmount - amount < 0 ? 0 : curAmount - amount;
+    changeAmount({material, value}) {
+      this.list[material].curAmount =
+        value > this.list[material].amount ? this.list[material].amount : value;
+      appSettings.setString('list', JSON.stringify(this.list));
+    },
+    removeOne(material) {
+      this.$delete(this.list, material);
+      appSettings.setString('list', JSON.stringify(this.list));
     },
     removeAll() {
       this.list = {};

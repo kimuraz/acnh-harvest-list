@@ -48,10 +48,15 @@ export default {
         cancelButtonText: 'Cancel',
         defaultText: 0,
         inputType: inputType.number,
-      }).then(result => {
-        getMaterialsFromDIY(diy).forEach(m => {
-          this.$emit('addMaterial', {...m, name: m.materialName});
-        });
+      }).then(({result, text}) => {
+        if (result) {
+          getMaterialsFromDIY(diy).forEach(m => {
+            this.$emit('addMaterial', {
+              amount: m.quantity * parseInt(text, 10),
+              name: m.materialName,
+            });
+          });
+        }
       });
     },
   },
