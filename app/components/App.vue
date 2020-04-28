@@ -16,7 +16,7 @@
       iosIconRenderingMode="alwaysOriginal"
     >
       <TabViewItem
-        title="Raw materials"
+        title="Materials"
         iconSource="~/assets/images/branch-icon.png"
       >
         <MaterialsList @addMaterial="addMaterial" />
@@ -27,6 +27,7 @@
       <TabViewItem title="My list" iconSource="~/assets/images/tick-icon.png">
         <HarvestList
           :list="list"
+          @remove="removeOne"
           @removeAll="removeAll"
           @change="changeAmount"
         />
@@ -71,7 +72,11 @@ export default {
     },
     changeAmount({material, value}) {
       this.list[material].curAmount =
-        value > this.list[material].amount ? this.list[material].amount : value;
+        value > this.list[material].amount
+          ? this.list[material].amount
+          : value >= 0
+          ? value
+          : 0;
       appSettings.setString('list', JSON.stringify(this.list));
     },
     removeOne(material) {

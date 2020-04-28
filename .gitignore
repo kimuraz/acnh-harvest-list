@@ -11,3 +11,7 @@ platforms
 
 # General
 .DS_STORE
+.cloud/*
+*.der
+*.jks
+*.csr

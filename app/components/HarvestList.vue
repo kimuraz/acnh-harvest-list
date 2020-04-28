@@ -11,7 +11,7 @@
             'light-green-bg': list[harvest].curAmount >= list[harvest].amount,
           }"
         >
-          <Label class="h3" :text="harvest" width="45%" />
+          <Label class="h3" :text="harvest" width="33%" />
           <Button
             text="-"
             class="red-bg"
@@ -19,7 +19,7 @@
             @tap="emitChange(harvest, list[harvest].curAmount - 1)"
             width="8%"
           />
-          <Label class="h3" :text="list[harvest].curAmount" width="5%" />
+          <Label class="h3" :text="list[harvest].curAmount" width="7%" />
           <Button
             fontSize="20"
             text="+"
@@ -27,13 +27,13 @@
             @tap="emitChange(harvest, list[harvest].curAmount + 1)"
             width="8%"
           />
-          <Label class="h3" text="of" width="5%" />
-          <Label class="h3" :text="list[harvest].amount" width="5%" />
+          <Label class="h3" text="of" width="3%" />
+          <Label class="h3" :text="list[harvest].amount" width="7%" />
           <Button
             class="red-bg"
             text="Remove"
             @tap="$emit('remove', harvest)"
-            width="10%"
+            width="15%"
           />
         </WrapLayout>
       </v-template>

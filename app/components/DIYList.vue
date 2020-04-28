@@ -52,7 +52,7 @@ export default {
         if (result) {
           getMaterialsFromDIY(diy).forEach(m => {
             this.$emit('addMaterial', {
-              amount: m.quantity * parseInt(text, 10),
+              amount: parseInt(m.quantity, 10) * parseInt(text, 10),
               name: m.materialName,
             });
           });
